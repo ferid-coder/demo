@@ -5,52 +5,20 @@
  */
 package theproject;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author ferid
  */
-public class TheProject {
+public class TheProject extends FileNotFoundException {
 
-    public static int i = 0;
-    static String s = "51Pa*0Lp*0e";
-    //  static StringBuffer s1 = new StringBuffer(s);
-    static StringBuffer sb = new StringBuffer(s);
+    public int[] arr;
+  
+            
 
-    public static void main(String[] args) {
-        decryptPassword("");
+    public static void main(String[] args) throws InterruptedException, Exception {
+        System.out.println( FileUtility.readObjectFile("Config.obj"));
+       
     }
-
-    public static String decryptPassword(String ss) {
-
-        int value = s.length();
-
-        int foo = Character.getNumericValue(s.charAt(0));
-        if (foo > 0) {
-            if (s.charAt(0) == '5') {
-
-                sb = sb.delete(0, 1);
-                sb.setCharAt(8, '5');
-
-                //Pa*0Lp*5e
-            }
-            if (sb.charAt(0) == '1') {
-
-                sb = sb.delete(0, 1);
-                sb.setCharAt(3, '1');
-                System.out.println(sb);
-            }
-            if (Character.isLowerCase(sb.charAt(1))) {//Pa*1Lp*5e
-                String message = sb.toString();
-                String[] strings = message.split("\\s+");
-
-                for (int i = strings.length - 1; i >= 0; i--) {
-                    sb.append(strings[i] + " ");
-                }
-                System.out.println(sb.toString().trim());
-            }
-        }
-
-        return "";
-    }
-
 }
